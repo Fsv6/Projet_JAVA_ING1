@@ -257,7 +257,7 @@
 								"reference": {
 									"$ref": "AAAAAAGGxg0VV4yL2Ug="
 								},
-								"multiplicity": "0"
+								"multiplicity": "1"
 							}
 						}
 					],
@@ -1048,7 +1048,7 @@
 							},
 							"name": "prix",
 							"visibility": "private",
-							"type": ""
+							"type": "float"
 						}
 					],
 					"operations": [
@@ -4124,7 +4124,7 @@
 											"top": 1020,
 											"width": 159,
 											"height": 13,
-											"text": "-prix",
+											"text": "-prix: float",
 											"horizontalAlignment": 0
 										}
 									],
@@ -9300,7 +9300,7 @@
 									"hostEdge": {
 										"$ref": "AAAAAAGWFrhTbcFmQqc="
 									},
-									"text": "0"
+									"text": "1"
 								},
 								{
 									"_type": "UMLQualifierCompartmentView",
