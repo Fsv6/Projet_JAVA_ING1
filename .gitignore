@@ -1,1 +1,15 @@
 /bin/
+# Fichiers compilés
+*.class
+
+# Dossiers de compilation IntelliJ
+/out/
+classes/
+.idea/
+*.iml
+
+# Autres IDE (au cas où)
+*.log
+*.swp
+.DS_Store
+
