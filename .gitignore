@@ -13,3 +13,7 @@ classes/
 *.swp
 .DS_Store
 
+# .gitignore
+config.properties
+
+
