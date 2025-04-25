@@ -1,4 +1,4 @@
-package MainTestUnitaire;
+package tri.test;
 
 import Poubelle.Bac;
 import Poubelle.TypeDechet;
