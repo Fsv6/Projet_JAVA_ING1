@@ -1,10 +1,10 @@
-package MainTestUnitaire;
+package tri.test;
 
-import Poubelle.Bac;
-import Poubelle.Dechet;
-import Poubelle.PoubelleIntelligente;
-import Poubelle.TypeDechet;
-import Poubelle.Depot;
+import tri.logic.Bac;
+import tri.logic.Dechet;
+import tri.logic.PoubelleIntelligente;
+import tri.logic.TypeDechet;
+import tri.logic.Depot;
 
 public class TestPoubelleIntelligente {
     public static void main(String[] args) {
