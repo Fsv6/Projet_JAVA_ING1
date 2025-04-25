@@ -1,4 +1,4 @@
-package Poubelle;
+package tri.logic;
 
 public class Bac {
     private int poidsActuel;
