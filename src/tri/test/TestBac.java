@@ -1,7 +1,7 @@
 package tri.test;
 
-import Poubelle.Bac;
-import Poubelle.TypeDechet;
+import tri.logic.Bac;
+import tri.logic.TypeDechet;
 
 public class TestBac {
     public static void main(String[] args) {
