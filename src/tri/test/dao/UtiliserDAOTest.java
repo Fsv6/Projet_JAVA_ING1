@@ -18,7 +18,6 @@ public class UtiliserDAOTest {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
 
-            // Nettoyage préalable
             st.executeUpdate("DELETE FROM utiliser");
 
         } catch (SQLException e) {
@@ -26,21 +25,17 @@ public class UtiliserDAOTest {
         }
 
         int idBonAchat = 1;
-        int idCommerce = 1; // Supposé exister en base
+        int idCommerce = 1;
 
-        // 1. Enregistrement de l'utilisation d'un bon
         dao.insertUtilisation(idBonAchat, idCommerce);
         System.out.println("Insertion réussie pour bon " + idBonAchat + " dans commerce " + idCommerce);
 
-        // 2. Lecture : commerces pour un bon
         List<Integer> commerces = dao.getCommercesByBonAchat(idBonAchat);
         System.out.println("Commerces récupérés pour bon " + idBonAchat + " : " + commerces);
 
-        // 3. Suppression de l'utilisation
         dao.deleteUtilisation(idBonAchat, idCommerce);
         System.out.println("Suppression réussie.");
 
-        // 4. Vérification après suppression
         commerces = dao.getCommercesByBonAchat(idBonAchat);
         System.out.println("Commerces après suppression : " + commerces);
     }

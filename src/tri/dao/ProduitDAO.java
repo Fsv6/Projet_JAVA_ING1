@@ -7,7 +7,6 @@ import tri.utils.DatabaseConnection;
 
 public class ProduitDAO {
 
-    // Create : insérer un produit
     public void insertProduit(Produit produit) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
@@ -24,7 +23,6 @@ public class ProduitDAO {
         }
     }
 
-    // Read : récupérer un produit par son id
     public Produit getProduitById(int idProduit) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement();
@@ -46,7 +44,6 @@ public class ProduitDAO {
         }
     }
 
-    // Delete : supprimer un produit
     public void deleteProduit(int idProduit) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {

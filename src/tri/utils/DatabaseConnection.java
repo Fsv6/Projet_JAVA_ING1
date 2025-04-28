@@ -12,7 +12,7 @@ public class DatabaseConnection {
     private static String PASSWORD;
 
     static {
-        try (InputStream input = DatabaseConnection.class.getClassLoader().getResourceAsStream("config.properties")) {
+        try (InputStream input = DatabaseConnection.class.getClassLoader().getResourceAsStream("config.properties")) { //à mettre dans la racine du package tri
             Properties prop = new Properties();
             prop.load(input);
 

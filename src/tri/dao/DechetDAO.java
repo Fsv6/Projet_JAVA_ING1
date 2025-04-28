@@ -9,7 +9,6 @@ import tri.utils.DatabaseConnection;
 
 public class DechetDAO {
 
-    // Create : insérer un déchet
     public void insertDechet(Dechet dechet, int idDepot) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
@@ -26,7 +25,6 @@ public class DechetDAO {
         }
     }
 
-    // Read : récupérer un déchet par son id
     public Dechet getDechetById(int idDechet) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement();
@@ -47,7 +45,6 @@ public class DechetDAO {
         }
     }
 
-    // Read all : récupérer tous les déchets d'un dépôt
     public List<Dechet> getDechetsByDepot(int idDepot) {
         List<Dechet> dechets = new ArrayList<>();
         try (Connection conn = DatabaseConnection.getConnection();
@@ -69,7 +66,6 @@ public class DechetDAO {
         return dechets;
     }
 
-    // Delete : supprimer un déchet
     public void deleteDechet(int idDechet) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {

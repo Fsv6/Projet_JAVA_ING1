@@ -18,7 +18,6 @@ public class DepotTest {
         dechets.add(new Dechet(1,TypeDechet.VERRE, 500));
         dechets.add(new Dechet(2,TypeDechet.VERRE, 300));
 
-        // Ajout des déchets un par un pour tester la méthode ajouterDechet()
         for (Dechet d : dechets) {
             depot.ajouterDechet(d);
         }

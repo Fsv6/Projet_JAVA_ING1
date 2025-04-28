@@ -7,7 +7,6 @@ import tri.utils.DatabaseConnection;
 
 public class ConvertirDAO {
 
-    // Ajouter une conversion (un compte possède un bon)
     public void insertConversion(int idCompte, int idBonAchat) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
@@ -22,7 +21,6 @@ public class ConvertirDAO {
         }
     }
 
-    // Supprimer une conversion (par exemple après utilisation du bon)
     public void deleteConversion(int idCompte, int idBonAchat) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
@@ -35,7 +33,6 @@ public class ConvertirDAO {
         }
     }
 
-    // Lire tous les idBonAchat associés à un compte
     public List<Integer> getBonAchatsByCompte(int idCompte) {
         List<Integer> bons = new ArrayList<>();
         try (Connection conn = DatabaseConnection.getConnection();

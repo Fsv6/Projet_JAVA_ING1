@@ -64,7 +64,6 @@ public class BacDAO {
     }
 
 
-    // Update : mettre à jour le poids actuel d'un bac
     public void updatePoidsActuel(int idBac, int nouveauPoids) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
@@ -77,7 +76,6 @@ public class BacDAO {
         }
     }
 
-    // Delete : supprimer un bac
     public void deleteBac(int idBac) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {

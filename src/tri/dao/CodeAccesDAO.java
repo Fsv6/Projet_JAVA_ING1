@@ -5,7 +5,7 @@ import java.sql.*;
 
 public class CodeAccesDAO {
 
-    // Create
+
     public void insertCodeAcces(String code, int idPoubelle) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
@@ -18,7 +18,6 @@ public class CodeAccesDAO {
         }
     }
 
-    // Read
     public boolean verifierCodeAcces(String code) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement();
@@ -60,7 +59,6 @@ public class CodeAccesDAO {
         }
     }
 
-    // Delete
     public void deleteCodeAcces(int idPoubelle) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {

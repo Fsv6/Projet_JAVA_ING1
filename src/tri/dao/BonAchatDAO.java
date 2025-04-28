@@ -8,7 +8,6 @@ import tri.utils.DatabaseConnection;
 
 public class BonAchatDAO {
 
-    // Create
     public void insertBonAchat(BonAchat bonAchat) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
@@ -23,7 +22,6 @@ public class BonAchatDAO {
         }
     }
 
-    // Read
     public BonAchat getBonAchatById(int idBonAchat) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement();
@@ -43,7 +41,6 @@ public class BonAchatDAO {
         }
     }
 
-    // Delete
     public void deleteBonAchat(int idBonAchat) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
@@ -56,7 +53,6 @@ public class BonAchatDAO {
         }
     }
 
-    // Read all
     public List<BonAchat> getAllBonAchats() {
         List<BonAchat> bons = new ArrayList<>();
         try (Connection conn = DatabaseConnection.getConnection();

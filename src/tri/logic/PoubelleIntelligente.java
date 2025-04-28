@@ -41,6 +41,7 @@ public class PoubelleIntelligente {
             } else {
                 bac.ajouterDechet(dechet.getPoids());
                 points -= 2;
+                depot.setPointsAttribues(points);
                 throw new DechetNonConformeException("Erreur : le déchet de type " + dechet.getType() + " ne correspond pas aux types acceptés par ce bac.");
             }
         }

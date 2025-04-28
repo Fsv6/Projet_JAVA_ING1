@@ -9,13 +9,11 @@ public class BonAchat {
     private final int id;
     private final int montant;
 
-    // Constructeur pour créer un nouveau bon d'achat
     public BonAchat(int montant) {
         this.id = compteurId.incrementAndGet();
         this.montant = montant;
     }
 
-    // Constructeur pour recréer un bon existant (ex: depuis la base)
     public BonAchat(int id, int montant) {
         this.id = id;
         this.montant = montant;

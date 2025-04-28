@@ -6,7 +6,6 @@ import tri.utils.DatabaseConnection;
 
 public class CommerceDAO {
 
-    // Create
     public void insertCommerce(Commerce commerce) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
@@ -21,7 +20,6 @@ public class CommerceDAO {
         }
     }
 
-    // Read
     public Commerce getCommerceById(int idCommerce) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement();
@@ -41,7 +39,6 @@ public class CommerceDAO {
         }
     }
 
-    // Delete
     public void deleteCommerce(int idCommerce) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {

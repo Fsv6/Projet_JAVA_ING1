@@ -20,7 +20,6 @@ public class DepotDAOTest {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
 
-            // Nettoyage préalable
             st.executeUpdate("DELETE FROM depot");
 
         } catch (SQLException e) {
@@ -28,25 +27,21 @@ public class DepotDAOTest {
         }
 
         int idDepot = 1;
-        int idCompte = 1; // Supposé exister en base
-        int idPoubelle = 1; // Supposé exister aussi
+        int idCompte = 1;
+        int idPoubelle = 1;
 
-        // 1. Création d'un dépôt
         Depot depot = new Depot(idDepot, 50, new Date(), new ArrayList<>());
         dao.insertDepot(depot, idCompte, idPoubelle);
         System.out.println("Insertion réussie pour dépôt " + idDepot);
 
-        // 2. Lecture du dépôt
         Depot depotLu = dao.getDepotById(idDepot);
         System.out.println("Depot lu : id=" + depotLu.getIdDepot() +
                 ", points=" + depotLu.getPointsAttribues() +
                 ", date=" + depotLu.getDateDepot());
 
-        // 3. Suppression du dépôt
         dao.deleteDepot(idDepot);
         System.out.println("Suppression réussie du dépôt.");
 
-        // 4. Vérification
         try {
             dao.getDepotById(idDepot);
         } catch (RuntimeException e) {

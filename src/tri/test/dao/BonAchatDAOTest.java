@@ -18,23 +18,19 @@ public class BonAchatDAOTest {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
 
-            // Nettoyage préalable
             st.executeUpdate("DELETE FROM bonachat");
 
         } catch (SQLException e) {
             throw new RuntimeException("Erreur de nettoyage : " + e.getMessage(), e);
         }
 
-        // 1. Créer un nouveau bon d'achat
         BonAchat bon = new BonAchat(50);
         dao.insertBonAchat(bon);
         System.out.println("Insertion réussie : " + bon);
 
-        // 2. Lire le bon d'achat depuis la base
         BonAchat bonLu = dao.getBonAchatById(bon.getId());
         System.out.println("Bon lu en base : " + bonLu);
 
-        // 3. Vérification de la cohérence des id
         if (bon.getId() == bonLu.getId()) {
             System.out.println("Test OK : Id cohérent entre Java et BDD (" + bon.getId() + ")");
         } else {

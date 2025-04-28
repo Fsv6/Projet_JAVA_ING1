@@ -6,7 +6,6 @@ import tri.utils.DatabaseConnection;
 
 public class CompteDAO {
 
-    // Create : insérer un compte
     public void insertCompte(Compte compte) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
@@ -23,7 +22,6 @@ public class CompteDAO {
         }
     }
 
-    // Read : récupérer un compte par son id
     public Compte getCompteById(int idCompte) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement();
@@ -45,7 +43,6 @@ public class CompteDAO {
         }
     }
 
-    // Update : mettre à jour les points de fidélité
     public void updatePointsFidelite(int idCompte, int nouveauxPoints) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
@@ -58,7 +55,6 @@ public class CompteDAO {
         }
     }
 
-    // Delete : supprimer un compte
     public void deleteCompte(int idCompte) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {

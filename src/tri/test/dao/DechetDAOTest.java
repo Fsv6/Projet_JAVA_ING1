@@ -19,7 +19,6 @@ public class DechetDAOTest {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
 
-            // Nettoyage préalable
             st.executeUpdate("DELETE FROM dechet");
 
         } catch (SQLException e) {
@@ -27,24 +26,20 @@ public class DechetDAOTest {
         }
 
         int idDechet = 1;
-        int idDepot = 1; // Supposé exister
+        int idDepot = 1;
 
-        // 1. Création d'un déchet
         Dechet dechet = new Dechet(idDechet, TypeDechet.PLASTIQUE, 5);
         dao.insertDechet(dechet, idDepot);
         System.out.println("Insertion réussie pour déchet " + idDechet);
 
-        // 2. Lecture du déchet
         Dechet dechetLu = dao.getDechetById(idDechet);
         System.out.println("Déchet lu : id=" + dechetLu.getIdDechet() +
                 ", type=" + dechetLu.getType() +
                 ", poids=" + dechetLu.getPoids());
 
-        // 3. Suppression du déchet
         dao.deleteDechet(idDechet);
         System.out.println("Suppression réussie du déchet.");
 
-        // 4. Vérification
         try {
             dao.getDechetById(idDechet);
         } catch (RuntimeException e) {

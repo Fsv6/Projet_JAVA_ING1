@@ -19,13 +19,13 @@ public class ContratTest {
             System.out.println("Erreur");
         }
 
-        /*Produit produitEligible = new Produit("ALIMENTAIRE", "Banane", 1);
-        Produit produitNonEligible = new Produit("ELECTRONIQUE", "Téléphone", 500);
+        Produit produitEligible = new Produit(1,"ALIMENTAIRE", "Banane", 1);
+        Produit produitNonEligible = new Produit(2,"ELECTRONIQUE", "Téléphone", 500);
 
         if (contrat.estProduitEligible(produitEligible) && !contrat.estProduitEligible(produitNonEligible)) {
             System.out.println("Test d'éligibilité des produits OK");
         } else {
             System.out.println("Erreur dans la vérification de l'éligibilité des produits");
-        }*/
+        }
     }
 }

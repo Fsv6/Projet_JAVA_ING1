@@ -10,7 +10,6 @@ import tri.utils.DatabaseConnection;
 
 public class ContratDAO {
 
-    // Create
     public void insertContrat(Contrat contrat, int idCentreTri, int idCommerce) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
@@ -30,7 +29,6 @@ public class ContratDAO {
         }
     }
 
-    // Read
     public Contrat getContrat(int idCentreTri, int idCommerce) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement();
@@ -52,7 +50,7 @@ public class ContratDAO {
         }
     }
 
-    // Delete
+
     public void deleteContrat(int idCentreTri, int idCommerce) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {

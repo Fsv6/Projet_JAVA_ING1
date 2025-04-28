@@ -6,7 +6,6 @@ import tri.utils.DatabaseConnection;
 
 public class CentreTriDAO {
 
-    // Create
     public void insertCentreTri(CentreTri centreTri) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
@@ -25,7 +24,6 @@ public class CentreTriDAO {
         }
     }
 
-    // Read
     public CentreTri getCentreTriById(int idCentreTri) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement();
@@ -49,7 +47,6 @@ public class CentreTriDAO {
         }
     }
 
-    // Delete
     public void deleteCentreTri(int idCentreTri) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {

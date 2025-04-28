@@ -14,7 +14,6 @@ public class Compte {
 
 	public Compte() {}
 
-	// Nouveau constructeur sans codeAcces
 	public Compte(int id, String nom, String prenom, int nbPointsFidelite) {
 		this.id = id;
 		this.nom = nom;

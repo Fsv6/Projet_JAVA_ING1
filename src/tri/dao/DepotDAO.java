@@ -8,7 +8,6 @@ import tri.utils.DatabaseConnection;
 
 public class DepotDAO {
 
-    // Create : insérer un dépôt
     public void insertDepot(Depot depot, int idCompte, int idPoubelleIntelligente) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
@@ -29,7 +28,6 @@ public class DepotDAO {
         }
     }
 
-    // Read : récupérer un dépôt par son id
     public Depot getDepotById(int idDepot) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement();
@@ -52,7 +50,6 @@ public class DepotDAO {
         }
     }
 
-    // Delete : supprimer un dépôt
     public void deleteDepot(int idDepot) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {

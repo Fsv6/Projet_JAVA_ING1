@@ -18,7 +18,6 @@ public class ProduitDAOTest {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
 
-            // Nettoyage préalable
             st.executeUpdate("DELETE FROM produit");
 
         } catch (SQLException e) {
@@ -27,23 +26,19 @@ public class ProduitDAOTest {
 
         int idProduit = 1;
 
-        // 1. Création d'un produit
         Produit produit = new Produit(idProduit, "alimentaire", "Bouteille d''eau", 1.99);
         dao.insertProduit(produit);
         System.out.println("Insertion réussie pour produit " + idProduit);
 
-        // 2. Lecture du produit
         Produit produitLu = dao.getProduitById(idProduit);
         System.out.println("Produit lu : id=" + produitLu.getIdProduit() +
                 ", nom=" + produitLu.getNom() +
                 ", catégorie=" + produitLu.getCategorie() +
                 ", prix=" + produitLu.getPrix());
 
-        // 3. Suppression du produit
         dao.deleteProduit(idProduit);
         System.out.println("Suppression réussie du produit.");
 
-        // 4. Vérification
         try {
             dao.getProduitById(idProduit);
         } catch (RuntimeException e) {

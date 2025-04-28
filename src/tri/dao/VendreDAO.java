@@ -7,7 +7,6 @@ import tri.utils.DatabaseConnection;
 
 public class VendreDAO {
 
-    // Create : enregistrer qu'un commerce vend un produit
     public void insertVente(int idCommerce, int idProduit) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
@@ -22,7 +21,6 @@ public class VendreDAO {
         }
     }
 
-    // Read : récupérer tous les produits vendus par un commerce
     public List<Integer> getProduitsByCommerce(int idCommerce) {
         List<Integer> produits = new ArrayList<>();
         try (Connection conn = DatabaseConnection.getConnection();
@@ -39,7 +37,7 @@ public class VendreDAO {
         return produits;
     }
 
-    // Read (optionnel) : récupérer tous les commerces qui vendent un produit
+
     public List<Integer> getCommercesByProduit(int idProduit) {
         List<Integer> commerces = new ArrayList<>();
         try (Connection conn = DatabaseConnection.getConnection();

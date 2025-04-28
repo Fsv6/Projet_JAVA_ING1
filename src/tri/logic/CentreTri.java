@@ -80,7 +80,7 @@ public void afficherStatistiques() {
 	public void signerContrat(Commerce commerce, LocalDate dateDebut, LocalDate dateFin, List<String> listeCatProduits) {
 		Contrat nouveauContrat = new Contrat(dateDebut, dateFin, listeCatProduits);
 		commerce.ajouterContrat(nouveauContrat);
-		contrats.add(nouveauContrat);
+		this.contrats.add(nouveauContrat);
 		System.out.println("Contrat signé avec le commerce : " + commerce.getNom());
 	}
 

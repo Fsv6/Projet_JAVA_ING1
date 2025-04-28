@@ -9,7 +9,6 @@ public class CompteTest {
     public static void main(String[] args) {
         System.out.println("=== Test de la classe Compte ===");
 
-        // Création d'un compte
         Compte compte = new Compte(1, "Dupont", "Jean", 0);
         if (compte.getNom().equals("Dupont") && compte.getNbPointsFidelite() == 0) {
             System.out.println("Création du compte OK");
@@ -17,21 +16,18 @@ public class CompteTest {
             System.out.println("Erreur lors de la création du compte");
         }
 
-        // Création d'un dépôt simulé (sans validation de la poubelle ici)
         Depot depot = new Depot();
         depot.setDateDepot(new Date());
-        depot.setPointsAttribues(3); // Simuler que la poubelle a attribué 3 points
+        depot.setPointsAttribues(3);
 
-        // Réaliser le dépôt
-        // Ici, pour simplifier, nous ne testons que la logique d'ajout dans l'historique et d'augmentation des points
-        compte.realiserDepot(depot, new PoubelleIntelligente(1,"PoubelleTest", 42,43), new Bac());
+
+        compte.realiserDepot(depot, new PoubelleIntelligente(1,"PoubelleTest", 42,43), new Bac(1, 100, new ArrayList<>()));
         if (compte.getHistoriqueDepot().size() == 1 && compte.getNbPointsFidelite() == 3) {
             System.out.println("Réalisation du dépôt OK");
         } else {
             System.out.println("Erreur lors de la réalisation du dépôt");
         }
 
-        // Test de conversion en bon d'achat (si le compte possède suffisamment de points, ici 3 < 60 => pas de conversion)
         compte.convertirEnBonAchat();
         if (compte.getListBonAchat().isEmpty()) {
             System.out.println("Conversion en bon d'achat (non déclenchée comme prévu) OK");
@@ -59,6 +55,6 @@ public class CompteTest {
         }
     }
 
-
 }
+
 

@@ -7,7 +7,6 @@ import tri.utils.DatabaseConnection;
 
 public class UtiliserDAO {
 
-    // Create : enregistrer l'utilisation d'un bon d'achat dans un commerce
     public void insertUtilisation(int idBonAchat, int idCommerce) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
@@ -22,7 +21,6 @@ public class UtiliserDAO {
         }
     }
 
-    // Read : récupérer tous les commerces où un bon a été utilisé
     public List<Integer> getCommercesByBonAchat(int idBonAchat) {
         List<Integer> commerces = new ArrayList<>();
         try (Connection conn = DatabaseConnection.getConnection();
@@ -39,7 +37,6 @@ public class UtiliserDAO {
         return commerces;
     }
 
-    // Delete : (optionnel) supprimer une utilisation enregistrée
     public void deleteUtilisation(int idBonAchat, int idCommerce) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {

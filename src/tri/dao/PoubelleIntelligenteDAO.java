@@ -6,7 +6,6 @@ import tri.utils.DatabaseConnection;
 
 public class PoubelleIntelligenteDAO {
 
-    // Create : insérer une poubelle intelligente
     public void insertPoubelle(PoubelleIntelligente poubelle, int idCentreTri) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement()) {
@@ -24,7 +23,6 @@ public class PoubelleIntelligenteDAO {
         }
     }
 
-    // Read : récupérer une poubelle par son id
     public PoubelleIntelligente getPoubelleById(int idPoubelleIntelligente) {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement st = conn.createStatement();
