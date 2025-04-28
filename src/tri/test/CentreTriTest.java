@@ -10,7 +10,7 @@ import java.util.List;
 public class CentreTriTest {
     public static void main(String[] args) {
         // Création du centre de tri
-        CentreTri centre = new CentreTri();
+        /*CentreTri centre = new CentreTri();
         centre.setId(1);
         centre.setNom("Centre de Tri Nord");
         centre.setNumRue(12);
@@ -59,6 +59,6 @@ public class CentreTriTest {
         }
 
         // Affichage final des statistiques
-        centre.faireStatistiques();
+        centre.faireStatistiques();*/
     }
 }

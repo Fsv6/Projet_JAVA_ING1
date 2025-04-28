@@ -1,9 +1,6 @@
 package tri.test;
 
-import tri.logic.Compte;
-import tri.logic.Depot;
-import tri.logic.PoubelleIntelligente;
-import tri.logic.TypeDechet;
+import tri.logic.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,7 +10,7 @@ public class CompteTest {
         System.out.println("=== Test de la classe Compte ===");
 
         // Création d'un compte
-        Compte compte = new Compte(1, "Dupont", "Jean", 1234, 0);
+        Compte compte = new Compte(1, "Dupont", "Jean", 0);
         if (compte.getNom().equals("Dupont") && compte.getNbPointsFidelite() == 0) {
             System.out.println("Création du compte OK");
         } else {
@@ -27,7 +24,7 @@ public class CompteTest {
 
         // Réaliser le dépôt
         // Ici, pour simplifier, nous ne testons que la logique d'ajout dans l'historique et d'augmentation des points
-        compte.realiserDepot(depot, new PoubelleIntelligente("PoubelleTest"), TypeDechet.METAL);
+        compte.realiserDepot(depot, new PoubelleIntelligente(1,"PoubelleTest", 42,43), new Bac());
         if (compte.getHistoriqueDepot().size() == 1 && compte.getNbPointsFidelite() == 3) {
             System.out.println("Réalisation du dépôt OK");
         } else {
@@ -61,5 +58,7 @@ public class CompteTest {
             System.out.println("Test Compte non valide");
         }
     }
+
+
 }
 

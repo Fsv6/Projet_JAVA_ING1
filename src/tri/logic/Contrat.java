@@ -2,16 +2,19 @@ package tri.logic;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Contrat {
+
+    private static final AtomicInteger idCounter = new AtomicInteger(1);
 
     private int id;
     private LocalDate dateDebut;
     private LocalDate dateFin;
     private List<String> listeCatProduits; // catégories de produits éligibles aux bons
 
-    public Contrat(int id, LocalDate dateDebut, LocalDate dateFin, List<String> listeCatProduits) {
-        this.id = id;
+    public Contrat(LocalDate dateDebut, LocalDate dateFin, List<String> listeCatProduits) {
+        this.id = idCounter.getAndIncrement();
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.listeCatProduits = listeCatProduits;

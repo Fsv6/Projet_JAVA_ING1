@@ -1,5 +1,5 @@
 package tri.logic;
 
 public enum TypeDechet {
-	CARTON, VERRE, METAL, PAPIER, AUTRE
+	CARTON, VERRE, METAL, PAPIER, PLASTIQUE, AUTRE
 }

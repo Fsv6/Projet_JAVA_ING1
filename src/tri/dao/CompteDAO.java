@@ -1,62 +1,73 @@
 package tri.dao;
 
+import java.sql.*;
 import tri.logic.Compte;
 import tri.utils.DatabaseConnection;
 
-import java.sql.*;
-
 public class CompteDAO {
 
-    public Compte getById(int id) {
-        String sql = "SELECT * FROM Compte WHERE id = ?";
+    // Create : insérer un compte
+    public void insertCompte(Compte compte) {
         try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             Statement st = conn.createStatement()) {
 
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
+            String sql = "INSERT INTO compte (idCompte, nomResponsable, prenomResponsable, nbPointsFidelite) VALUES ("
+                    + compte.getId() + ", '"
+                    + compte.getNom() + "', '"
+                    + compte.getPrenom() + "', "
+                    + compte.getNbPointsFidelite() + ")";
+            st.executeUpdate(sql);
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur lors de l'insertion du compte : " + e.getMessage(), e);
+        }
+    }
+
+    // Read : récupérer un compte par son id
+    public Compte getCompteById(int idCompte) {
+        try (Connection conn = DatabaseConnection.getConnection();
+             Statement st = conn.createStatement();
+             ResultSet rs = st.executeQuery("SELECT * FROM compte WHERE idCompte = " + idCompte)) {
 
             if (rs.next()) {
                 return new Compte(
-                        rs.getInt("id"),
-                        rs.getString("nom"),
-                        rs.getString("prenom"),
-                        rs.getInt("code_acces"),
-                        rs.getInt("points_fidelite")
+                        rs.getInt("idCompte"),
+                        rs.getString("nomResponsable"),
+                        rs.getString("prenomResponsable"),
+                        rs.getInt("nbPointsFidelite")
                 );
+            } else {
+                throw new RuntimeException("Aucun compte trouvé avec l'id " + idCompte);
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Erreur lors de la récupération du compte : " + e.getMessage(), e);
         }
-
-        return null;
     }
 
-    public boolean insertCompte(Compte compte) {
-        String sql = "INSERT INTO Compte (nom, prenom, code_acces, points_fidelite) VALUES (?, ?, ?, ?)";
+    // Update : mettre à jour les points de fidélité
+    public void updatePointsFidelite(int idCompte, int nouveauxPoints) {
         try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+             Statement st = conn.createStatement()) {
 
-            stmt.setString(1, compte.getNom());
-            stmt.setString(2, compte.getPrenom());
-            stmt.setInt(3, compte.getCodeAcces());
-            stmt.setInt(4, compte.getNbPointsFidelite());
-
-            int rows = stmt.executeUpdate();
-
-            if (rows > 0) {
-                ResultSet generatedKeys = stmt.getGeneratedKeys();
-                if (generatedKeys.next()) {
-                    compte.setId(generatedKeys.getInt(1)); // met à jour l'id dans l'objet Java
-                }
-                return true;
-            }
+            String sql = "UPDATE compte SET nbPointsFidelite = " + nouveauxPoints + " WHERE idCompte = " + idCompte;
+            st.executeUpdate(sql);
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Erreur lors de la mise à jour des points de fidélité : " + e.getMessage(), e);
         }
+    }
 
-        return false;
+    // Delete : supprimer un compte
+    public void deleteCompte(int idCompte) {
+        try (Connection conn = DatabaseConnection.getConnection();
+             Statement st = conn.createStatement()) {
+
+            String sql = "DELETE FROM compte WHERE idCompte = " + idCompte;
+            st.executeUpdate(sql);
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur lors de la suppression du compte : " + e.getMessage(), e);
+        }
     }
 }
-

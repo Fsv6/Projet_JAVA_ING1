@@ -5,14 +5,20 @@ import java.util.List;
 
 public class Commerce {
 
+    private int idCommerce;
     private String nom;
     private List<Produit> produits;
     private List<Contrat> contrats;
 
-    public Commerce(String nom) {
+    public Commerce(int idCommerce, String nom) {
+        this.idCommerce = idCommerce;
         this.nom = nom;
         this.produits = new ArrayList<>();
         this.contrats = new ArrayList<>();
+    }
+
+    public int getIdCommerce() {
+        return idCommerce;
     }
 
     public String getNom() {
@@ -47,8 +53,7 @@ public class Commerce {
         contrats.remove(contrat);
     }
 
-
-    public boolean vérifierBonAchat(List<Produit> panier) {
+    public boolean verifierBonAchat(List<Produit> panier) {
         for (Produit produit : panier) {
             for (Contrat contrat : contrats) {
                 if (contrat.estProduitEligible(produit)) {
@@ -59,3 +64,4 @@ public class Commerce {
         return false;
     }
 }
+
