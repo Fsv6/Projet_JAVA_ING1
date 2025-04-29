@@ -21,6 +21,10 @@ public class Commerce {
         return idCommerce;
     }
 
+    public void setIdCommerce(int idCommerce) {
+        this.idCommerce = idCommerce;
+    }
+
     public String getNom() {
         return nom;
     }
