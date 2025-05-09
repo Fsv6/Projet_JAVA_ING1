@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tri.controllers.BonAchatController">
+
+    <!-- Panneau de navigation latéral à gauche -->
+    <left>
+        <VBox prefWidth="200.0" spacing="20.0" style="-fx-background-color: #2C3E50;" styleClass="sidebar">
+            <padding>
+                <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+            </padding>
+            
+            <!-- Logo ou titre de l'application -->
+            <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" styleClass="sidebar-title" text="Menu" />
+            
+            <Separator style="-fx-background-color: #34495E;" />
+            
+            <!-- Menu de navigation -->
+            <Button fx:id="btnAccueil" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" styleClass="nav-button" text="Mon profil" />
+            <Button fx:id="btnPoubelles" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" styleClass="nav-button" text="Poubelles" />
+            <Button fx:id="btnDepots" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" styleClass="nav-button" text="Mes dépôts" />
+            <Button fx:id="btnBonsAchat" prefWidth="180.0" style="-fx-background-color: #34495E; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" styleClass="nav-button" text="Bons d'achat" />
+            <Button fx:id="btnCommerces" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" styleClass="nav-button" text="Commerces" />
+            
+            <Region VBox.vgrow="ALWAYS" />
+            
+            <!-- Bouton de déconnexion en bas de la barre latérale -->
+            <Button fx:id="btnDeconnexion" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" styleClass="nav-button" text="Déconnexion" />
+        </VBox>
+    </left>
+    
+    <!-- Contenu principal -->
+    <center>
+        <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
+            <!-- Onglet pour l'obtention de bons d'achat -->
+            <Tab text="Obtenir des bons">
+                <BorderPane>
+                    <top>
+                        <VBox spacing="10" style="-fx-background-color: #ECF0F1; -fx-padding: 20px;">
+                            <HBox alignment="CENTER_LEFT" spacing="15">
+                                <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Convertir mes points" />
+                            </HBox>
+                            <Text fx:id="txtDescription" text="Convertissez vos points de fidélité en bons d'achat utilisables chez nos commerces partenaires." wrappingWidth="650" />
+                        </VBox>
+                    </top>
+                    
+                    <center>
+                        <VBox spacing="20" style="-fx-padding: 20px;">
+                            <!-- Affichage des points disponibles -->
+                            <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: #F5F5F5; -fx-padding: 15px; -fx-background-radius: 5px;" styleClass="points-display">
+                                <Label style="-fx-font-size: 16px;" text="Points disponibles:" />
+                                <Label fx:id="lblPointsDisponibles" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #27AE60;" text="750" />
+                            </HBox>
+                            
+                            <!-- Options de conversion de points -->
+                            <TitledPane expanded="true" text="Choisissez votre bon d'achat">
+                                <VBox spacing="15" style="-fx-padding: 10px;">
+                                    <Text text="Sélectionnez le montant du bon d'achat que vous souhaitez créer:" />
+                                    
+                                       <GridPane hgap="20" vgap="15">
+                                        <columnConstraints>
+                                            <ColumnConstraints percentWidth="33" />
+                                            <ColumnConstraints percentWidth="33" />
+                                            <ColumnConstraints percentWidth="33" />
+                                        </columnConstraints>
+                                        
+                                           <!-- Bon 5€ -->
+                                        <VBox spacing="5" style="-fx-background-color: white; -fx-padding: 15px; -fx-border-color: #E0E0E0; -fx-border-radius: 5px;" styleClass="bon-option" GridPane.columnIndex="0">
+                                            <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Bon de 5€" />
+                                            <Text text="Coût: 500 points" wrappingWidth="150" />
+                                            <Region prefHeight="10" />
+                                            <Button fx:id="btn5euros" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-padding: 8px 15px;" styleClass="btn-obtenir" text="Obtenir ce bon" />
+                                        </VBox>
+                                        
+                                           <!-- Bon 15€ -->
+                                        <VBox spacing="5" style="-fx-background-color: white; -fx-padding: 15px; -fx-border-color: #E0E0E0; -fx-border-radius: 5px;" styleClass="bon-option" GridPane.columnIndex="1">
+                                            <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Bon de 15€" />
+                                            <Text text="Coût: 1400 points" wrappingWidth="150" />
+                                            <Region prefHeight="10" />
+                                            <Button fx:id="btn15euros" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-padding: 8px 15px;" styleClass="btn-obtenir" text="Obtenir ce bon" />
+                                        </VBox>
+                                        
+                                           <!-- Bon 30€ -->
+                                        <VBox spacing="5" style="-fx-background-color: white; -fx-padding: 15px; -fx-border-color: #E0E0E0; -fx-border-radius: 5px;" styleClass="bon-option" GridPane.columnIndex="2">
+                                            <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Bon de 30€" />
+                                            <Text text="Coût: 2700 points" wrappingWidth="150" />
+                                            <Region prefHeight="10" />
+                                            <Button fx:id="btn30euros" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-padding: 8px 15px;" styleClass="btn-obtenir" text="Obtenir ce bon" />
+                                        </VBox>
+                              <rowConstraints>
+                                 <RowConstraints />
+                              </rowConstraints>
+                                    </GridPane>
+                                </VBox>
+                            </TitledPane>
+                            
+                            <!-- Informations sur les bons d'achat -->
+                            <TitledPane expanded="false" text="Comment ça marche">
+                                <VBox spacing="10" style="-fx-padding: 15px;">
+                                    <Text text="1. Convertissez vos points de fidélité en bons d'achat en choisissant le montant souhaité." wrappingWidth="650" />
+                                    <Text text="2. Les bons d'achat créés apparaîtront dans l'onglet 'Mes bons disponibles'." wrappingWidth="650" />
+                                    <Text text="3. Utilisez vos bons dans les commerces partenaires pour bénéficier de réductions." wrappingWidth="650" />
+                                    <Text text="4. Consultez l'historique de vos utilisations dans l'onglet 'Historique'." wrappingWidth="650" />
+                                </VBox>
+                            </TitledPane>
+                        </VBox>
+                    </center>
+                </BorderPane>
+            </Tab>
+            
+            <!-- Nouvel onglet pour les bons d'achat disponibles -->
+            <Tab text="Mes bons disponibles">
+                <BorderPane>
+                    <top>
+                        <VBox spacing="10" style="-fx-background-color: #ECF0F1; -fx-padding: 20px;">
+                            <HBox alignment="CENTER_LEFT" spacing="15">
+                                <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Mes bons d'achat disponibles" />
+                            </HBox>
+                            <Text text="Retrouvez ici tous vos bons d'achat actifs que vous pouvez utiliser chez nos commerces partenaires." wrappingWidth="650" />
+                        </VBox>
+                    </top>
+                    
+                    <center>
+                        <VBox spacing="15" style="-fx-padding: 20px;">
+                            <HBox alignment="CENTER_RIGHT" spacing="10">
+                                <Button fx:id="btnActualiser" style="-fx-background-color: #F0F0F0; -fx-padding: 5px 10px;" styleClass="btn-actualiser" text="Actualiser" />
+                            </HBox>
+                            
+                            <TableView fx:id="tableBonsAchat" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn fx:id="colId" prefWidth="80.0" text="ID" />
+                                    <TableColumn fx:id="colMontant" prefWidth="120.0" text="Montant" />
+                                    <TableColumn fx:id="colDateCreation" prefWidth="180.0" text="Date de création" />
+                                    <TableColumn fx:id="colStatus" prefWidth="120.0" text="Statut" />
+                                    <TableColumn fx:id="colActions" prefWidth="150.0" text="Actions" />
+                                </columns>
+                                <placeholder>
+                                    <Label style="-fx-text-fill: #7F8C8D;" text="Vous n'avez pas encore de bons d'achat disponibles." />
+                                </placeholder>
+                            </TableView>
+                            
+                            <VBox spacing="10" style="-fx-background-color: #F8F9FA; -fx-padding: 15px; -fx-border-color: #E0E0E0; -fx-border-radius: 5px;" styleClass="info-panel">
+                                <Label style="-fx-font-weight: bold; -fx-font-size: 14px;" text="Comment utiliser mes bons?" />
+                                <Text text="Cliquez sur 'Utiliser' pour un bon d'achat spécifique. Vous pourrez choisir le commerce partenaire où vous souhaitez l'utiliser. Une fois utilisé, le bon apparaîtra dans l'onglet 'Historique'." wrappingWidth="650" />
+                            </VBox>
+                        </VBox>
+                    </center>
+                </BorderPane>
+            </Tab>
+            
+            <!-- Onglet pour l'historique d'utilisation -->
+            <Tab text="Historique">
+                <BorderPane>
+                    <top>
+                        <VBox spacing="10" style="-fx-background-color: #ECF0F1; -fx-padding: 20px;">
+                            <HBox alignment="CENTER_LEFT" spacing="15">
+                                <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Historique des bons d'achats" />
+                            </HBox>
+                            <Text text="Consultez l'historique de l'utilisation de vos bons d'achat chez nos commerces partenaires." wrappingWidth="650" />
+                        </VBox>
+                    </top>
+                    
+                    <center>
+                        <VBox spacing="15" style="-fx-padding: 20px;">
+                            <HBox alignment="CENTER_RIGHT" spacing="10">
+                                <ComboBox fx:id="cmbFiltrePeriode" promptText="Toutes les périodes" />
+                                <ComboBox fx:id="cmbFiltreCommerce" promptText="Tous les commerces" />
+                            </HBox>
+                            
+                            <TableView fx:id="tableHistorique" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn fx:id="colHistId" prefWidth="80.0" text="ID Bon" />
+                                    <TableColumn fx:id="colHistMontant" prefWidth="100.0" text="Montant" />
+                                    <TableColumn fx:id="colHistCommerce" prefWidth="200.0" text="Commerce" />
+                                    <TableColumn fx:id="colHistDate" prefWidth="200.0" text="Date d'utilisation" />
+                                    <TableColumn fx:id="colHistDetail" prefWidth="100.0" text="Détails" />
+                                </columns>
+                                <placeholder>
+                                    <Label style="-fx-text-fill: #7F8C8D;" text="Aucun historique d'utilisation disponible." />
+                                </placeholder>
+                            </TableView>
+                            
+                            <HBox alignment="CENTER_RIGHT" spacing="10">
+                                <Button fx:id="btnExportHistorique" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-padding: 5px 10px;" styleClass="btn-export" text="Exporter l'historique" />
+                            </HBox>
+                        </VBox>
+                    </center>
+                </BorderPane>
+            </Tab>
+        </TabPane>
+    </center>
+    
+    <!-- Barre de statut en bas -->
+    <bottom>
+        <HBox prefWidth="898.0" style="-fx-background-color: #ECF0F1; -fx-padding: 5px 15px;">
+            <Label style="-fx-text-fill: #7F8C8D;" text="© 2025 - CY Tech G2 - Projet Gestion de Tri sélectif" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="lblStatusBar" style="-fx-text-fill: #7F8C8D;" text="Connecté en tant que: Utilisateur" />
+        </HBox>
+    </bottom>
+    
+</BorderPane>

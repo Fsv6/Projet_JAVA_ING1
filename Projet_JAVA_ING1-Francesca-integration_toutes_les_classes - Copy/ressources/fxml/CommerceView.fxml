@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tri.controllers.CommerceController">
+
+    <!-- Panneau de navigation latéral à gauche -->
+    <left>
+        <VBox prefWidth="200.0" spacing="20.0" style="-fx-background-color: #2C3E50;" styleClass="sidebar">
+            <padding>
+                <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+            </padding>
+            
+            <!-- Logo ou titre de l'application -->
+            <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" styleClass="sidebar-title" text="Menu" />
+            
+            <Separator style="-fx-background-color: #34495E;" />
+            
+            <!-- Menu de navigation -->
+            <Button fx:id="btnAccueil" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" styleClass="nav-button" text="Accueil" />
+            <Button fx:id="btnPoubelles" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" styleClass="nav-button" text="Poubelles" />
+            <Button fx:id="btnDepots" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" styleClass="nav-button" text="Mes dépôts" />
+            <Button fx:id="btnBonsAchat" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" styleClass="nav-button" text="Bons d'achat" />
+            <Button fx:id="btnCommerces" prefWidth="180.0" style="-fx-background-color: #34495E; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" styleClass="nav-button" text="Commerces" />
+            
+            <Region VBox.vgrow="ALWAYS" />
+            
+            <!-- Bouton de déconnexion en bas de la barre latérale -->
+            <Button fx:id="btnDeconnexion" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;" styleClass="nav-button" text="Déconnexion" />
+        </VBox>
+    </left>
+    
+    <!-- Contenu principal -->
+    <center>
+        <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
+            <!-- Onglet pour la liste des commerces -->
+            <Tab text="Commerces partenaires">
+                <BorderPane>
+                    <top>
+                        <VBox spacing="10" style="-fx-background-color: #ECF0F1; -fx-padding: 20px;">
+                            <HBox alignment="CENTER_LEFT" spacing="15">
+                                <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Commerces partenaires" />
+                            </HBox>
+                            <Text fx:id="txtDescription" text="Découvrez nos commerces partenaires où vous pouvez utiliser vos bons d'achat pour bénéficier de réductions." wrappingWidth="650" />
+                        </VBox>
+                    </top>
+                    
+                    <center>
+                        <VBox spacing="20" style="-fx-padding: 20px;">
+                            <!-- Barre de recherche et filtre -->
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <TextField fx:id="txtRecherche" prefWidth="300.0" promptText="Rechercher un commerce..." />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <ComboBox fx:id="cmbCategorie" promptText="Toutes les catégories" />
+                                <Button fx:id="btnActualiser" style="-fx-background-color: #F0F0F0; -fx-padding: 5px 10px;" text="Actualiser" />
+                            </HBox>
+                            
+                            <!-- Liste des commerces en mode grille -->
+                            <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+                                <GridPane fx:id="gridCommerces" hgap="20" vgap="20">
+                                    <columnConstraints>
+                                        <ColumnConstraints percentWidth="50" />
+                                        <ColumnConstraints percentWidth="50" />
+                                    </columnConstraints>
+                                </GridPane>
+                            </ScrollPane>
+                        </VBox>
+                    </center>
+                </BorderPane>
+            </Tab>
+            
+            <!-- Onglet pour la liste des produits du commerce sélectionné -->
+            <Tab text="Produits">
+                <BorderPane>
+                    <top>
+                        <VBox spacing="10" style="-fx-background-color: #ECF0F1; -fx-padding: 20px;">
+                            <HBox alignment="CENTER_LEFT" spacing="15">
+                                <Label fx:id="lblCommerceProduits" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Produits disponibles" />
+                            </HBox>
+                            <Text fx:id="txtDescriptionProduits" text="Sélectionnez d'abord un commerce pour voir la liste de ses produits." wrappingWidth="650" />
+                        </VBox>
+                    </top>
+                    
+                    <center>
+                        <VBox spacing="15" style="-fx-padding: 20px;">
+                            <!-- Barre de recherche et filtre de produits -->
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <TextField fx:id="txtRechercheProduit" prefWidth="300.0" promptText="Rechercher un produit..." />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <ComboBox fx:id="cmbCategorieProduit" promptText="Toutes les catégories" />
+                                <Button fx:id="btnRetourCommerces" style="-fx-background-color: #F0F0F0; -fx-padding: 5px 10px;" text="Retour aux commerces" />
+                            </HBox>
+                            
+                            <!-- Tableau des produits -->
+                            <TableView fx:id="tableProduits" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn fx:id="colNomProduit" prefWidth="250.0" text="Nom" />
+                                    <TableColumn fx:id="colCategorieProduit" prefWidth="150.0" text="Catégorie" />
+                                    <TableColumn fx:id="colPrixProduit" prefWidth="100.0" text="Prix" />
+                                    <TableColumn fx:id="colActionsProduit" prefWidth="150.0" text="Actions" />
+                                </columns>
+                                <placeholder>
+                                    <Label style="-fx-text-fill: #7F8C8D;" text="Sélectionnez un commerce pour voir ses produits" />
+                                </placeholder>
+                            </TableView>
+                            
+                            <!-- Informations sur les bons d'achat -->
+                            <HBox spacing="10" style="-fx-background-color: #F8F9FA; -fx-padding: 15px; -fx-border-color: #E0E0E0; -fx-border-radius: 5px;">
+                                <Label style="-fx-font-weight: bold;" text="Bon d'achat disponible :" />
+                                <Label fx:id="lblBonsDisponibles" text="0 €" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <Button fx:id="btnVoirPanier" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-padding: 5px 15px;" styleClass="btn-panier" text="Voir mon panier" />
+                            </HBox>
+                        </VBox>
+                    </center>
+                </BorderPane>
+            </Tab>
+            
+            <!-- Onglet pour le panier -->
+            <Tab text="Mon panier">
+                <BorderPane>
+                    <top>
+                        <VBox spacing="10" style="-fx-background-color: #ECF0F1; -fx-padding: 20px;">
+                            <HBox alignment="CENTER_LEFT" spacing="15">
+                                <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Mon panier" />
+                            </HBox>
+                            <Text fx:id="txtDescriptionPanier" text="Vérifiez les produits dans votre panier et utilisez vos bons d'achat pour bénéficier de réductions." wrappingWidth="650" />
+                        </VBox>
+                    </top>
+                    
+                    <center>
+                        <VBox spacing="15" style="-fx-padding: 20px;">
+                            <!-- Tableau du panier -->
+                            <TableView fx:id="tablePanier" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn fx:id="colNomProduitPanier" prefWidth="250.0" text="Nom" />
+                                    <TableColumn fx:id="colCategorieProduitPanier" prefWidth="150.0" text="Catégorie" />
+                                    <TableColumn fx:id="colPrixProduitPanier" prefWidth="100.0" text="Prix" />
+                                    <TableColumn fx:id="colActionsProduitPanier" prefWidth="80.0" text="Actions" />
+                                </columns>
+                                <placeholder>
+                                    <Label style="-fx-text-fill: #7F8C8D;" text="Votre panier est vide" />
+                                </placeholder>
+                            </TableView>
+                            
+                            <!-- Récapitulatif et paiement -->
+                            <GridPane hgap="10" style="-fx-background-color: #F8F9FA; -fx-padding: 15px; -fx-border-color: #E0E0E0; -fx-border-radius: 5px;" vgap="10">
+                                <columnConstraints>
+                                    <ColumnConstraints percentWidth="50" />
+                                    <ColumnConstraints percentWidth="50" />
+                                </columnConstraints>
+                                
+                                <!-- Colonne gauche - Récapitulatif -->
+                                <VBox spacing="10" GridPane.columnIndex="0">
+                                    <Label style="-fx-font-weight: bold; -fx-font-size: 16px;" text="Récapitulatif" />
+                                    
+                                    <HBox spacing="10">
+                                        <Label prefWidth="150" text="Total panier :" />
+                                        <Label fx:id="lblTotalPanier" text="0.00 €" />
+                                    </HBox>
+                                    
+                                    <HBox spacing="10">
+                                        <Label prefWidth="150" text="Bons d'achat utilisés :" />
+                                        <Label fx:id="lblBonsUtilises" text="0.00 €" />
+                                    </HBox>
+                                    
+                                    <Separator />
+                                    
+                                    <HBox spacing="10">
+                                        <Label prefWidth="150" style="-fx-font-weight: bold;" text="Total à payer :" />
+                                        <Label fx:id="lblTotalAPayer" style="-fx-font-weight: bold;" text="0.00 €" />
+                                    </HBox>
+                                </VBox>
+                                
+                                <!-- Colonne droite - Bons d'achat et paiement -->
+                                <VBox spacing="10" GridPane.columnIndex="1">
+                                    <Label style="-fx-font-weight: bold; -fx-font-size: 16px;" text="Utiliser un bon d'achat" />
+                                    
+                                    <HBox alignment="CENTER_LEFT" spacing="10">
+                                        <ComboBox fx:id="cmbBonAchat" prefWidth="150" promptText="Sélectionner..." />
+                                        <Button fx:id="btnAppliquerBon" style="-fx-background-color: #2ECC71; -fx-text-fill: white;" text="Appliquer" />
+                                    </HBox>
+                                    
+                                    <Region prefHeight="20" />
+                                    
+                                    <Button fx:id="btnPayer" prefWidth="200" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-padding: 10px 15px; -fx-font-weight: bold;" text="Procéder au paiement" />
+                                </VBox>
+                        <rowConstraints>
+                           <RowConstraints />
+                        </rowConstraints>
+                            </GridPane>
+                        </VBox>
+                    </center>
+                </BorderPane>
+            </Tab>
+        </TabPane>
+    </center>
+    
+    <!-- Barre de statut en bas -->
+    <bottom>
+        <HBox style="-fx-background-color: #ECF0F1; -fx-padding: 5px 15px;">
+            <Label style="-fx-text-fill: #7F8C8D;" text="© 2025 - CY Tech G2 - Projet Gestion de Tri sélectif" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="lblStatusBar" style="-fx-text-fill: #7F8C8D;" text="Connecté en tant que: Utilisateur" />
+        </HBox>
+    </bottom>
+    
+</BorderPane>
