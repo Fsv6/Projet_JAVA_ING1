@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ch.makery.tri.controller.ListeCatProduitsController"
+            prefWidth="600.0" prefHeight="400.0">
+
+    <VBox spacing="10" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" style="-fx-padding: 20;">
+
+        <Label text="Liste des produits disponibles" style="-fx-font-size: 16;" />
+
+        <TextField fx:id="searchField" promptText="Rechercher un produit..." />
+
+        <TableView fx:id="produitsTable" prefHeight="230">
+            <columns>
+                <TableColumn fx:id="colNom" text="Nom" prefWidth="150"/>
+                <TableColumn fx:id="colPrix" text="Prix" prefWidth="100"/>
+                <TableColumn fx:id="colCategorie" text="Catégorie" prefWidth="150"/>
+            </columns>
+        </TableView>
+
+        <HBox spacing="10">
+            <Button text="Ajouter" onAction="#handleAfficherFormulaire" />
+            <Button text="Supprimer" onAction="#handleSupprimerProduit" />
+            <Button text="Modifier" onAction="#handleModifierProduit"/>
+        </HBox>
+
+        <!-- Formulaire caché -->
+        <VBox fx:id="formulairePane" visible="false" managed="false" spacing="10" style="-fx-border-color: #aaa; -fx-padding: 10;">
+            <TextField fx:id="nomProduitField" promptText="Nom du produit" />
+            <TextField fx:id="categorieField" promptText="Catégorie" />
+            <TextField fx:id="prixField" promptText="Prix" />
+            <Button text="Valider" onAction="#handleValiderProduit"/>
+        </VBox>
+    </VBox>
+</AnchorPane>
