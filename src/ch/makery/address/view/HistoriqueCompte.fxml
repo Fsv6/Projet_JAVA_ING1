@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.model.HistoriqueDepotsController">
+
+    <!-- Barre latérale gauche (inchangée) -->
+    <left>
+        <VBox prefWidth="200.0" spacing="20.0" style="-fx-background-color: #2C3E50;" styleClass="sidebar">
+            <padding>
+                <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+            </padding>
+
+            <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="Menu" />
+            <Separator style="-fx-background-color: #34495E;" />
+
+            <Button fx:id="btnAccueil" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Mon profil" />
+            <Button fx:id="btnPoubelles" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Historique" />
+            <Button fx:id="btnBonsAchat" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Bons d'achat" />
+            <Button fx:id="btnCommerces" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Commerces" />
+
+            <Region VBox.vgrow="ALWAYS" />
+            <Button fx:id="btnDeconnexion" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Déconnexion" />
+        </VBox>
+    </left>
+
+    <!-- Contenu principal -->
+    <center>
+        <HBox spacing="20" style="-fx-padding: 20px;">
+            <!-- Liste des dépôts (à gauche du centre) -->
+            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Historique des dépôts" />
+                <TableView fx:id="tableDepots" prefWidth="450">
+                    <columns>
+                        <TableColumn fx:id="colDepotDate" prefWidth="200" text="Date du dépôt" />
+                        <TableColumn fx:id="colDepotType" prefWidth="200" text="Type de dépôt" />
+                    </columns>
+                    <placeholder>
+                        <Label text="Aucun dépôt trouvé." />
+                    </placeholder>
+                </TableView>
+            </VBox>
+
+            <!-- Détails du dépôt sélectionné (à droite) -->
+            <VBox prefWidth="300" spacing="15" style="-fx-background-color: #F5F5F5; -fx-padding: 15px; -fx-border-color: #E0E0E0; -fx-border-radius: 5px;">
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Détails du dépôt" />
+                <Label fx:id="lblDate" text="Date: -" />
+                <Label fx:id="lblType" text="Type: -" />
+                <Label fx:id="lblQuantite" text="Quantité: -" />
+                <Label fx:id="lblPointsGagnes" text="Points gagnés: -" />
+                <Label fx:id="lblLieuDepot" text="Lieu: -" />
+            </VBox>
+        </HBox>
+    </center>
+
+    <!-- Barre de statut -->
+    <bottom>
+        <HBox style="-fx-background-color: #ECF0F1; -fx-padding: 5px 15px;">
+            <Label style="-fx-text-fill: #7F8C8D;" text="© 2025 - CY Tech G2 - Projet Gestion de Tri sélectif" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="lblStatusBar" style="-fx-text-fill: #7F8C8D;" text="Connecté en tant que: Utilisateur" />
+        </HBox>
+    </bottom>
+</BorderPane>

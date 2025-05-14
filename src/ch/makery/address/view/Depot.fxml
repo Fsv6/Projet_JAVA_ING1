@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.model.DepotController">
+
+    <!-- Menu latéral gauche (inchangé) -->
+    <left>
+        <VBox prefWidth="200.0" spacing="20.0" style="-fx-background-color: #2C3E50;">
+            <padding>
+                <Insets bottom="20" left="10" right="10" top="20" />
+            </padding>
+
+            <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="Menu" />
+            <Separator />
+
+            <Button fx:id="btnAccueil" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Mon profil" />
+            <Button fx:id="btnPoubelles" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Liste de Poubelle" />
+            <Button fx:id="btnBonsAchat" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Bons d'achat" />
+            <Button fx:id="btnCommerces" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Commerces" />
+
+            <Region VBox.vgrow="ALWAYS" />
+            <Button fx:id="btnDeconnexion" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Déconnexion" />
+        </VBox>
+    </left>
+
+    <!-- Contenu principal au centre -->
+    <center>
+        <VBox alignment="CENTER" spacing="20.0" style="-fx-padding: 50;">
+            <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Faire un dépôt" />
+
+            <HBox spacing="10">
+                <Label text="Poids (en kg):" />
+                <TextField fx:id="txtPoids" prefWidth="100" promptText="ex: 1.5" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Type de déchet:" />
+                <ComboBox fx:id="comboTypeDechet" prefWidth="200" promptText="Choisir un type" />
+            </HBox>
+
+            <Button fx:id="btnFaireDepot" style="-fx-background-color: #27AE60; -fx-text-fill: white; -fx-font-size: 14px;" text="Faire le dépôt" />
+        </VBox>
+    </center>
+
+    <!-- Barre de statut -->
+    <bottom>
+        <HBox style="-fx-background-color: #ECF0F1; -fx-padding: 5px 15px;">
+            <Label style="-fx-text-fill: #7F8C8D;" text="© 2025 - CY Tech G2 - Projet Gestion de Tri sélectif" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="lblStatusBar" style="-fx-text-fill: #7F8C8D;" text="Connecté en tant que: Utilisateur" />
+        </HBox>
+    </bottom>
+
+</BorderPane>

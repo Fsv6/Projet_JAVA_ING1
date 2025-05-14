@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.model.ListePoubelleController">
+
+    <!-- Menu latéral gauche -->
+    <left>
+        <VBox prefWidth="200.0" spacing="20.0" style="-fx-background-color: #2C3E50;">
+            <padding>
+                <Insets bottom="20" left="10" right="10" top="20" />
+            </padding>
+
+            <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;" text="Menu" />
+            <Separator />
+
+            <Button fx:id="btnAccueil" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Mon profil" />
+            <Button fx:id="btnPoubelles" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Historique" />
+            <Button fx:id="btnBonsAchat" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Bons d'achat" />
+            <Button fx:id="btnCommerces" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Commerces" />
+
+            <Region VBox.vgrow="ALWAYS" />
+            <Button fx:id="btnDeconnexion" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Déconnexion" />
+        </VBox>
+    </left>
+
+    <!-- Contenu principal : liste des poubelles -->
+    <center>
+        <VBox spacing="20" style="-fx-padding: 30;">
+            <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Liste des poubelles disponibles" />
+
+            <TableView fx:id="tablePoubelles" prefHeight="366.0" prefWidth="639.0">
+                <columns>
+                    <TableColumn fx:id="colId" prefWidth="159.20001828670502" text="ID" />
+                    <TableColumn fx:id="colLocalisation" prefWidth="251.20004272460938" text="Localisation" />
+                    <TableColumn fx:id="colCapacite" prefWidth="229.59994506835938" text="Status" />
+                </columns>
+            </TableView>
+         <Button fx:id="btnFaireDepot" prefWidth="180"  text="Faire un dépot" />
+        </VBox>
+    </center>
+
+    <!-- Barre d'information en bas -->
+    <bottom>
+        <HBox style="-fx-background-color: #ECF0F1; -fx-padding: 5px 15px;">
+            <Label style="-fx-text-fill: #7F8C8D;" text="© 2025 - CY Tech G2 - Projet Gestion de Tri sélectif" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="lblStatusBar" style="-fx-text-fill: #7F8C8D;" text="Connecté en tant que: Utilisateur" />
+        </HBox>
+    </bottom>
+
+</BorderPane>
