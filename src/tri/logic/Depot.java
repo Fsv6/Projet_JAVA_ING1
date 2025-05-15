@@ -5,25 +5,34 @@ import java.util.Date;
 
 public class Depot {
 
+	private int idDepot;
 	private int pointsAttribues;
 	private Date dateDepot;
 	private ArrayList<Dechet> listeDechet = new ArrayList<>();
 
 	public Depot() {}
 
-	public Depot(int pointsAttribues, Date dateDepot, ArrayList<Dechet> listeDechet) {
+	public Depot(int idDepot, int pointsAttribues, Date dateDepot, ArrayList<Dechet> listeDechet) {
+		this.idDepot = idDepot;
 		this.pointsAttribues = pointsAttribues;
 		this.dateDepot = dateDepot;
 		this.listeDechet = listeDechet;
 	}
 
 	public int getPoidsDechet() {
-		// Calcul dynamique du poids total
 		int total = 0;
 		for (Dechet d : listeDechet) {
 			total += d.getPoids();
 		}
 		return total;
+	}
+
+	public int getIdDepot() {
+		return idDepot;
+	}
+
+	public void setIdDepot(int idDepot) {
+		this.idDepot = idDepot;
 	}
 
 	public int getPointsAttribues() {
@@ -54,4 +63,5 @@ public class Depot {
 		this.listeDechet.remove(dechet);
 	}
 }
+
 

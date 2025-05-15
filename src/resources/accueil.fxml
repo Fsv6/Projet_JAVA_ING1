@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.CentreTriController"
+            prefWidth="800" prefHeight="600"
+            style="-fx-background-color: #f4f4f4;">
+
+    <!-- En-tête -->
+    <top>
+        <HBox spacing="20" alignment="CENTER_RIGHT" style="-fx-padding: 15; -fx-background-color: #2c3e50;">
+            <children>
+                <Label text="Centre de Tri - Gestion"
+                       style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;"
+                       HBox.hgrow="ALWAYS" />
+                <Button fx:id="deconnexion"
+                        text="Déconnexion"
+                        onAction="#handleDeconnexion"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white;" />
+            </children>
+        </HBox>
+    </top>
+
+    <!-- Menu principal à gauche -->
+    <left>
+    <VBox spacing="12" alignment="TOP_CENTER" style="-fx-padding: 20;">
+        <children>
+            <Button fx:id="liste_poubelles"
+                    text="📦 Liste des poubelles"
+                    onAction="#handleListePoubelles"
+                    maxWidth="180" />
+            <Button fx:id="liste_contrats"
+                    text="📑 Liste des contrats"
+                    onAction="#handleListeContrats"
+                    maxWidth="180" />
+            <!-- Bouton pour créer une poubelle -->
+            <Button fx:id="placerpoubelles"
+                    text="🗑️ Nouvelle Poubelle"
+                    onAction="#handlePlacerPoubelle"
+                    maxWidth="180" />
+            <!-- Bouton pour créer un contrat -->
+            <Button fx:id="créer_contrat"
+                    text="📄 Créer Contrat"
+                    onAction="#handleAfficherFormContrat"
+                    maxWidth="180" />
+             <Button fx:id="stats"
+                        text="📊 Statistiques"
+                        onAction="#handleAfficherStats"
+                        maxWidth="180" />
+        </children>
+    </VBox>
+</left>
+    
+
+    <!-- Zone centrale : formulaires -->
+    <center>
+        <StackPane>
+            <children>
+
+                <!-- Liste des Poubelles -->
+				<VBox fx:id="listePoubellesContainer" spacing="10" alignment="CENTER"
+				      style="-fx-padding: 30;" visible="false">
+				    <children>
+				        <!-- Tu ajouteras ici dynamiquement d'autres poubelles -->
+				    </children>
+				</VBox>
+                
+
+                <!-- Liste des Contrats -->
+                <VBox fx:id="listeContratsContainer" spacing="10" alignment="CENTER"
+                      style="-fx-padding: 30;" visible="false">
+                    <children>
+                        <!-- Les contrats seront ajoutés ici dynamiquement -->
+                    </children>
+                </VBox>
+
+                <!-- Formulaire Placer Poubelle -->
+				<VBox fx:id="formPlacerPoubelle" spacing="10" alignment="CENTER"
+				      style="-fx-padding: 30;" visible="false">
+				    <children>
+				        <Label text="Nouvelle Poubelle" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+				        
+				        <!-- Champ pour l'ID -->
+				        <TextField fx:id="idPoubelle" promptText="ID de la poubelle" />
+				        
+				        <!-- Champ pour le nom du quartier -->
+				        <TextField fx:id="nomQuartier" promptText="Nom du quartier" />
+				        
+				        <!-- Champ pour la latitude -->
+				        <TextField fx:id="latitude" promptText="Latitude" />
+				        
+				        <!-- Champ pour la longitude -->
+				        <TextField fx:id="longitude" promptText="Longitude" />
+				        
+				        <!-- Bouton de validation -->
+				        <Button text="Valider" onAction="#handleValiderPoubelle"
+				                style="-fx-background-color: #27ae60; -fx-text-fill: white;" />
+				    </children>
+				</VBox>
+                
+
+                <VBox fx:id="formContrat" spacing="10" alignment="CENTER"
+				      style="-fx-padding: 30;" visible="false">
+				    <children>
+				        <Label text="Nouveau Contrat" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+				
+				        <TextField fx:id="fieldIdCentreTri" promptText="ID du Centre de Tri" />
+				        <TextField fx:id="fieldIdCommerce" promptText="ID du Commerce" />
+				        
+				        <DatePicker fx:id="dateDebutContrat" promptText="Date de début" />
+				        <DatePicker fx:id="dateFinContrat" promptText="Date de fin" />
+				        
+				        <Label text="Catégories de Produits :" style="-fx-font-weight: bold;" />
+				        <VBox spacing="5">
+				            <children>
+				                <CheckBox fx:id="catAlimentaire" text="Alimentaire" />
+								<CheckBox fx:id="catCosmetiques" text="Cosmétiques" />
+								<CheckBox fx:id="catVetements" text="Vêtements" />
+								<CheckBox fx:id="catElectronique" text="Électronique" />
+								<CheckBox fx:id="catMeubles" text="Meubles" />
+								<CheckBox fx:id="catJouets" text="Jouets" />
+								<CheckBox fx:id="catLivres" text="Livres" />
+				                
+				            </children>
+				        </VBox>
+				
+				        <!-- Bouton pour créer un contrat -->
+				        <Button text="Créer Contrat"
+				                onAction="#handleCreerContrat"
+				                style="-fx-background-color: #27ae60; -fx-text-fill: white;" />
+				
+				        <!-- Bouton pour renouveler le contrat, visible uniquement si nécessaire -->
+				        <Button fx:id="btnRenouveler"
+				                text="Renouveler Contrat"
+				                onAction="#handleRenouvelerContrat"
+				                style="-fx-background-color: #2980b9; -fx-text-fill: white;"
+				                visible="false" />
+				    </children>
+				</VBox>
+				
+				<!-- Formulaire Statistiques -->
+				<VBox fx:id="formStats" spacing="10" alignment="CENTER"
+				      style="-fx-padding: 30;" visible="false">
+				    <children>
+				        <Label text="Statistiques du Centre de Tri" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+				        <TextArea fx:id="statsArea" promptText="Les statistiques seront affichées ici..." 
+				                  wrapText="true" prefHeight="200" />
+				    </children>
+				</VBox>
+				
+
+            </children>
+        </StackPane>
+    </center>
+
+    <!-- Footer / zone d'infos -->
+    <bottom>
+        <VBox spacing="5" style="-fx-padding: 10 20 10 20;">
+            <children>
+                <Label text="Journal / Résultats :" style="-fx-font-weight: bold;" />
+                <TextArea fx:id="zoneInfo"
+                          promptText="Messages système, résultats, etc..."
+                          wrapText="true"
+                          prefHeight="100" />
+            </children>
+        </VBox>
+    </bottom>
+</BorderPane>

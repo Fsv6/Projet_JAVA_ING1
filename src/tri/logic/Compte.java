@@ -5,30 +5,19 @@ import java.util.List;
 
 public class Compte {
 
+	private int id;
+	private String nom;
+	private String prenom;
 	private int nbPointsFidelite;
-    private int id;
-    private String nom;
-    private String prenom;
-    private List<Depot> historiqueDepot = new ArrayList<>();
+	private List<Depot> historiqueDepot = new ArrayList<>();
 	private List<BonAchat> listBonAchat = new ArrayList<>();
 
 	public Compte() {}
 
-    public Compte(int id, String nom, String prenom, int codeAcces, int nbPointsFidelite) {
-        this.id = id; //automatiser la création de l'id sans le mettre en paramètre du constructeur
-        this.nom = nom;
-        this.prenom = prenom;
-		this.nbPointsFidelite = nbPointsFidelite;
-		this.historiqueDepot = new ArrayList<>();
-		this.listBonAchat = new ArrayList<>();
-    }
-
-
-	public int getNbPointsFidelite() {
-		return nbPointsFidelite;
-	}
-
-	public void setNbPointsFidelite(int nbPointsFidelite) {
+	public Compte(int id, String nom, String prenom, int nbPointsFidelite) {
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
 		this.nbPointsFidelite = nbPointsFidelite;
 	}
 
@@ -56,24 +45,33 @@ public class Compte {
 		this.prenom = prenom;
 	}
 
-	public void setHistoriqueDepot(ArrayList<Depot> historiqueDepot) {
-		this.historiqueDepot = historiqueDepot;
+	public int getNbPointsFidelite() {
+		return nbPointsFidelite;
+	}
+
+	public void setNbPointsFidelite(int nbPointsFidelite) {
+		this.nbPointsFidelite = nbPointsFidelite;
 	}
 
 	public List<Depot> getHistoriqueDepot() {
 		return historiqueDepot;
 	}
 
+	public void setHistoriqueDepot(ArrayList<Depot> historiqueDepot) {
+		this.historiqueDepot = historiqueDepot;
+	}
+
 	public List<BonAchat> getListBonAchat() {
 		return listBonAchat;
 	}
+
 	public void setListBonAchat(List<BonAchat> listBonAchat) {
 		this.listBonAchat = listBonAchat;
 	}
 
 	public void realiserDepot(Depot depot, PoubelleIntelligente poubelle, Bac bac) {
 
-		poubelle.attribuerPoint(depot, bac);
+		poubelle.ajouterDepot(depot, bac);
 		historiqueDepot.add(depot);
 		nbPointsFidelite += depot.getPointsAttribues();
 
@@ -95,7 +93,7 @@ public class Compte {
 	}
 	public void utiliserBonAchat(BonAchat bonAchat, Commerce commerce, List<Produit> panier) {
 
-		boolean bonValide = commerce.vérifierBonAchat(panier);
+		boolean bonValide = commerce.verifierBonAchat(panier);
 
 		if (bonValide) {
 			listBonAchat.remove(bonAchat);
@@ -123,5 +121,5 @@ public class Compte {
 				&& nbPointsFidelite == other.nbPointsFidelite && Objects.equals(nom, other.nom)
 				&& Objects.equals(prenom, other.prenom);
 	}*/
-    
+
 }

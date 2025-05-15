@@ -1,9 +1,10 @@
 package tri.logic;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class BonAchat {
 
-    private static final AtomicInteger compteurId = new AtomicInteger(0); // auto-incrément
+    private static final AtomicInteger compteurId = new AtomicInteger(0);
 
     private final int id;
     private final int montant;
@@ -11,6 +12,12 @@ public class BonAchat {
     public BonAchat(int montant) {
         this.id = compteurId.incrementAndGet();
         this.montant = montant;
+    }
+
+    public BonAchat(int id, int montant) {
+        this.id = id;
+        this.montant = montant;
+        compteurId.updateAndGet(current -> Math.max(current, id));
     }
 
     public int getId() {
@@ -23,7 +30,7 @@ public class BonAchat {
 
     @Override
     public String toString() {
-        return "BonAchat{id=" + id + ", montant=" + montant + "€}";
+        return "BonAchat{id=" + id + ", montant=" + montant + "}";
     }
 
     @Override
@@ -39,3 +46,4 @@ public class BonAchat {
         return Integer.hashCode(id);
     }
 }
+
