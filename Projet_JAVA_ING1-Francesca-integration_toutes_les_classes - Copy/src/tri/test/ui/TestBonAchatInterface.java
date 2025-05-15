@@ -10,14 +10,13 @@ public class TestBonAchatInterface extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Chargement de l'interface FXML
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressources/fxml/BonAchatView.fxml"));
+
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressources/fxml/BonAchatView.fxml"));
         Parent root = loader.load();
         
-        // Configuration de la scène
         Scene scene = new Scene(root);
         
-        // Configuration de la fenêtre
+
         primaryStage.setTitle("Test Interface Bon d'Achat");
         primaryStage.setScene(scene);
         primaryStage.setMinWidth(900);

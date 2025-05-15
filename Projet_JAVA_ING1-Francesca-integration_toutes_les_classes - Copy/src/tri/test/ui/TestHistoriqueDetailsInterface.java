@@ -6,17 +6,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class TestCommerceInterface extends Application {
+public class TestHistoriqueDetailsInterface extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressources/fxml/CommerceView.fxml"));
+    	
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressources/fxml/HistoriqueDetailsView.fxml"));
         Parent root = loader.load();
         
         Scene scene = new Scene(root);
         
-        primaryStage.setTitle("Test Interface Commerce");
+        primaryStage.setTitle("Test Interface details historique");
         primaryStage.setScene(scene);
         primaryStage.setMinWidth(900);
         primaryStage.setMinHeight(600);

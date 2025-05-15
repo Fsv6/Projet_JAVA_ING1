@@ -140,9 +140,7 @@
                     
                     <center>
                         <VBox spacing="15" style="-fx-padding: 20px;">
-                            <HBox alignment="CENTER_RIGHT" spacing="10">
-                                <Button fx:id="btnActualiser" style="-fx-background-color: #F0F0F0; -fx-padding: 5px 10px;" styleClass="btn-actualiser" text="Actualiser" />
-                            </HBox>
+                            <HBox alignment="CENTER_RIGHT" spacing="10" />
                             
                             <TableView fx:id="tableBonsAchat" VBox.vgrow="ALWAYS">
                                 <columns>
@@ -150,7 +148,6 @@
                                     <TableColumn fx:id="colMontant" prefWidth="120.0" text="Montant" />
                                     <TableColumn fx:id="colDateCreation" prefWidth="180.0" text="Date de création" />
                                     <TableColumn fx:id="colStatus" prefWidth="120.0" text="Statut" />
-                                    <TableColumn fx:id="colActions" prefWidth="150.0" text="Actions" />
                                 </columns>
                                 <placeholder>
                                     <Label style="-fx-text-fill: #7F8C8D;" text="Vous n'avez pas encore de bons d'achat disponibles." />
